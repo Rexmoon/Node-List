@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		BD2510252B76DF7B000DB340 /* Node_ListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2510242B76DF7B000DB340 /* Node_ListApp.swift */; };
-		BD2510272B76DF7B000DB340 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2510262B76DF7B000DB340 /* ContentView.swift */; };
+		BD2510272B76DF7B000DB340 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2510262B76DF7B000DB340 /* HomeView.swift */; };
 		BD2510292B76DF7C000DB340 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD2510282B76DF7C000DB340 /* Assets.xcassets */; };
 		BD25102C2B76DF7C000DB340 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD25102B2B76DF7C000DB340 /* Preview Assets.xcassets */; };
 		BD2510362B76DF7C000DB340 /* Node_ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2510352B76DF7C000DB340 /* Node_ListTests.swift */; };
 		BD2510402B76DF7C000DB340 /* Node_ListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD25103F2B76DF7C000DB340 /* Node_ListUITests.swift */; };
 		BD2510422B76DF7C000DB340 /* Node_ListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2510412B76DF7C000DB340 /* Node_ListUITestsLaunchTests.swift */; };
+		BD2510502B76E401000DB340 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD25104F2B76E401000DB340 /* Item.swift */; };
+		BD8713E92B77CCAB00CB8F11 /* NodeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8713E82B77CCAB00CB8F11 /* NodeListView.swift */; };
+		BD8713EC2B77D8BD00CB8F11 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8713EB2B77D8BD00CB8F11 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,7 @@
 /* Begin PBXFileReference section */
 		BD2510212B76DF7B000DB340 /* Node List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Node List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD2510242B76DF7B000DB340 /* Node_ListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node_ListApp.swift; sourceTree = "<group>"; };
-		BD2510262B76DF7B000DB340 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BD2510262B76DF7B000DB340 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		BD2510282B76DF7C000DB340 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD25102B2B76DF7C000DB340 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BD2510312B76DF7C000DB340 /* Node ListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Node ListTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +47,9 @@
 		BD25103B2B76DF7C000DB340 /* Node ListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Node ListUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD25103F2B76DF7C000DB340 /* Node_ListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node_ListUITests.swift; sourceTree = "<group>"; };
 		BD2510412B76DF7C000DB340 /* Node_ListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node_ListUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BD25104F2B76E401000DB340 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		BD8713E82B77CCAB00CB8F11 /* NodeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeListView.swift; sourceTree = "<group>"; };
+		BD8713EB2B77D8BD00CB8F11 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +100,9 @@
 		BD2510232B76DF7B000DB340 /* Node List */ = {
 			isa = PBXGroup;
 			children = (
+				BD8713E72B77CC9F00CB8F11 /* ReusableViews */,
 				BD2510242B76DF7B000DB340 /* Node_ListApp.swift */,
-				BD2510262B76DF7B000DB340 /* ContentView.swift */,
+				BD25104E2B76E3B7000DB340 /* Views */,
 				BD2510282B76DF7C000DB340 /* Assets.xcassets */,
 				BD25102A2B76DF7C000DB340 /* Preview Content */,
 			);
@@ -125,6 +132,40 @@
 				BD2510412B76DF7C000DB340 /* Node_ListUITestsLaunchTests.swift */,
 			);
 			path = "Node ListUITests";
+			sourceTree = "<group>";
+		};
+		BD25104E2B76E3B7000DB340 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BD2510512B76EA54000DB340 /* Home */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BD2510512B76EA54000DB340 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BD2510262B76DF7B000DB340 /* HomeView.swift */,
+				BD8713EB2B77D8BD00CB8F11 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		BD8713E72B77CC9F00CB8F11 /* ReusableViews */ = {
+			isa = PBXGroup;
+			children = (
+				BD8713EA2B77D88800CB8F11 /* NodeList */,
+			);
+			path = ReusableViews;
+			sourceTree = "<group>";
+		};
+		BD8713EA2B77D88800CB8F11 /* NodeList */ = {
+			isa = PBXGroup;
+			children = (
+				BD25104F2B76E401000DB340 /* Item.swift */,
+				BD8713E82B77CCAB00CB8F11 /* NodeListView.swift */,
+			);
+			path = NodeList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +298,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD2510272B76DF7B000DB340 /* ContentView.swift in Sources */,
+				BD2510272B76DF7B000DB340 /* HomeView.swift in Sources */,
+				BD8713EC2B77D8BD00CB8F11 /* HomeViewModel.swift in Sources */,
+				BD8713E92B77CCAB00CB8F11 /* NodeListView.swift in Sources */,
+				BD2510502B76E401000DB340 /* Item.swift in Sources */,
 				BD2510252B76DF7B000DB340 /* Node_ListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
