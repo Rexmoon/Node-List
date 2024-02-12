@@ -8,56 +8,62 @@
 import SwiftUI
 
 struct NodeListView: View {
+
+    @Binding private var selectedItem: Item?
+    @State private var selectedSubItem: Item?
     
-    @State private var items: [Item]
+    private let items: [Item]
     
-    init(items: [Item]) {
+    init(items: [Item], 
+         selectedItem: Binding<Item?>) {
         self.items = items
+        _selectedItem = selectedItem
+        self.selectedSubItem = selectedItem.wrappedValue
     }
     
     var body: some View {
         ScrollView {
             ForEach(items) { item in
-                Button {
-                    changeState(for: item.id)
-                } label: {
-                    Text(item.title)
-                        .font(.headline)
-                }
-                .frame(maxWidth: .infinity)
-                .frame(height: 72)
-                .tint(.white)
-                .background(
-                    RoundedRectangle(cornerRadius: 20).fill(.black)
-                        .overlay(content: {
-                            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                .stroke(lineWidth: 5)
-                                .fill(.blue)
-                        })
-                )
-                .padding(.vertical, 5)
-                .padding(.horizontal, 10)
-                
-                if item.showChildren,
-                   let items = item.children {
-                    NodeListView(items: items)
-                        .padding(.leading, 20)
+                LazyVStack {
+                    Button {
+                        selectedItem = item
+                    } label: {
+                        Text(item.title)
+                            .font(.headline)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 72)
+                            .tint(.white)
+                            .background(
+                                RoundedRectangle(cornerRadius: 20).fill(.black)
+                                    .overlay(content: {
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .stroke(lineWidth: 5)
+                                            .fill(isSelected(item: item) ? .blue : .gray)
+                                    })
+                            )
+                            .padding(.vertical, 5)
+                            .padding(.horizontal, 10)
+                    }
+                    
+                    if isSelected(item: item),
+                       let children = item.children {
+                        NodeListView(items: children, selectedItem: $selectedItem)
+                            .padding(.leading, 30)
+                    }
                 }
             }
         }
         .background(.black)
     }
     
-    private func changeState(for id: UUID) {
-        guard let index = items.firstIndex(where: { $0.id == id }) else { return }
-        var item = items[index]
-        item.toggle()
-        items[index] = item
+    private func isSelected(item: Item) -> Bool {
+        guard let selectedItem else { return false }
+        return selectedItem.id == item.id
     }
 }
 
 #Preview {
     let items: [Item] = HomeViewModel().items
     
-    return NodeListView(items: items)
+    return NodeListView(items: items, selectedItem: .constant(nil))
 }

@@ -9,24 +9,30 @@ import SwiftUI
 
 struct HomeView: View {
     
-    private let viewModel: HomeViewModel
+    @State private var selectedItem: Item?
     
-    init(viewModel: HomeViewModel) {
+    private var viewModel: HomeViewModel
+    
+    init(viewModel: HomeViewModel,
+         selectedItem: Item?) {
         self.viewModel = viewModel
+        self.selectedItem = selectedItem
     }
     
     var body: some View {
         NavigationStack {
             VStack {
+                Text("Selected: \(selectedItem?.title ?? "Not item")")
+                
                 NavigationLink {
-                    NodeListView(items: viewModel.items)
+                    NodeListView(items: viewModel.items, selectedItem: $selectedItem)
                 } label: {
-                    Text("Select another")
+                    Text("Select Item")
                         .padding()
                         .tint(.white)
                         .background(RoundedRectangle(cornerRadius: 8).fill(.blue))
                 }
-
+                
             }
             .navigationTitle("Home View")
         }
@@ -34,5 +40,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(viewModel: .init())
+    HomeView(viewModel: .init(), selectedItem: nil)
 }

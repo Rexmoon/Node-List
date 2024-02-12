@@ -11,7 +11,7 @@ import SwiftUI
 struct Node_ListApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView(viewModel: .init())
+            HomeView(viewModel: .init(), selectedItem: nil)
         }
     }
 }

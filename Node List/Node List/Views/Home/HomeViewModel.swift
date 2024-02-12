@@ -7,12 +7,18 @@
 
 import Foundation
 
-final class HomeViewModel: ObservableObject {
+final class HomeViewModel {
     
     // MARK: - Properties
     
-    let items: [Item] = (0...5).map { num in
-        let items = (0...2).map { Item(title: "Sub-Node #\($0)", showChildren: false, children: nil) }
-        return Item(title: "Node #\(num)", showChildren: false, children: num % 2 == 0 ? items : nil)
+    var items: [Item]
+    
+    // MARK: - Initializers
+    
+    init() {
+        self.items = (0...5).map { num in
+            let items = (0...2).map { Item(title: "Sub-Node \(num) #\($0)", children: nil) }
+            return Item(title: "Node #\(num)", children: num % 2 == 0 ? items : nil)
+        }
     }
 }

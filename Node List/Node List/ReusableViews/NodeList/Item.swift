@@ -7,13 +7,8 @@
 
 import Foundation
 
-struct Item: Identifiable {
+struct Item: Identifiable, Equatable {
     var id: UUID = .init()
     let title: String
-    var showChildren: Bool
     let children: [Item]?
-    
-    mutating func toggle() {
-        showChildren.toggle()
-    }
 }
